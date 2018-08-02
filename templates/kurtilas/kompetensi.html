@@ -1,0 +1,82 @@
+{% extends "base/base_content.html" %}
+
+{% block page_title %}Kompetensi{% endblock %}
+
+{% block page_header %}
+    Penilaian Kompetensi Spiritual
+{% endblock %}
+
+{% block page_content %}
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Keterangan Kompetensi</h5>
+            <div class="card-text">
+                Beribadah : Ketaatan beribadah<br>
+                Syukur : Berperilaku syukur<br>
+                Berdoa :Berdoa sebelum dan sesudah melakukan kegiatan<br>
+                Toleransi : Toleransi dalam beribadah<br>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>NIPD</th>
+                    <th>Nama</th>
+                    <th>Beribadah</th>
+                    <th>Syukur</th>
+                    <th>Berdoa</th>
+                    <th>Toleransi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in siswa -%}
+                    <tr>
+                        <td>
+                            {{loop.index}}
+                        </td>
+                        <td>
+                            {{item[0]}}
+                        </td>
+                        <td>
+                            {{item[1]}}
+                        </td>
+                        <td>
+                            <input type="radio" name="k1[{{loop.index0}}]" value="SB"/>
+                            <label>Sangat Baik</label>
+                            <input type="radio" name="k1[{{loop.index0}}]" value="B" checked/>
+                            <label>Baik</label>
+                        </td>
+                        <td>
+                            <input type="radio" name="k2[{{loop.index0}}]" value="SB"/>
+                            <label>Sangat Baik</label>
+                            <input type="radio" name="k2[{{loop.index0}}]" value="B" checked/>
+                            <label>Baik</label>
+                        </td>
+                        <td>
+                            <input type="radio" name="k3[{{loop.index0}}]" value="SB"/>
+                            <label>Sangat Baik</label>
+                            <input type="radio" name="k3[{{loop.index0}}]" value="B" checked/>
+                            <label>Baik</label>
+                        </td>
+                        <td>
+                            <input type="radio" name="k4[{{loop.index0}}]" value="SB"/>
+                            <label>Sangat Baik</label>
+                            <input type="radio" name="k4[{{loop.index0}}]" value="B" checked/>
+                            <label>Baik</label>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <a href="#"><button class="btn btn-success">Tambah Siswa</button></a>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base/base_content.html" %}
+
+{% block page_title %}Daftar Siswa{% endblock %}
+
+{% block page_header %}
+    Daftar Siswa
+{% endblock %}
+
+{% block page_content %}
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>NIPD</th>
+                    <th>NISN</th>
+                    <th>Nama Lengkap</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Tempat, Tanggal Lahir</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data_siswa -%}
+                    <tr>
+                        <td>
+                            {{loop.index}}
+                        </td>
+                        <td>
+                            {{item[0]}}
+                        </td>
+                        <td>
+                            {{item[1]}}
+                        </td>
+                        <td>
+                            {{item[2]}}
+                        </td>
+                        <td>
+                            {% if item[3]==0 %}
+                            Laki-laki
+                            {% else %}
+                            Perempuan
+                            {% endif %}
+                        </td>
+                        <td>
+                            {{item[5]}}, {{item[6]}}
+                        </td>
+                        <td>
+                            <a href="{{url_for('siswa.siswa_lihat', nipd=item[0])}}"><button class="btn btn-info">i</button></a>
+                            <a href="{{url_for('siswa.siswa_ubah', nipd=item[0])}}"><button class="btn btn-secondary">e</button></a>
+                            <a href="#"><button class="btn btn-danger">d</button></a>
+
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <a href="{{url_for('siswa.siswa_tambah')}}"><button class="btn btn-success">Tambah Siswa</button></a>
+
+{% endblock %}

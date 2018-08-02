@@ -1,0 +1,65 @@
+{% extends "base/base_content.html" %}
+
+{% block page_title %}Tambah Mata Pelajaran{% endblock %}
+
+{% block page_header %}
+    Tambah Mata Pelajaran
+{% endblock %}
+
+{% block page_content %}
+        Mata pelajaran : {{mapel}}
+        <br><br>
+        <h6>Pengetahuan</h6>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-sm" id="tabel_pengetahuan">
+                <thead>
+                    <tr>
+                        <th class="col-md-2">No KD</th>
+                        <th>Kompetensi Dasar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in data_mapel[0] %}
+                        <tr>
+                            <td>
+                                {{item[0]}}
+                            </td>
+                            <td>
+                                {{item[2]}}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <br><br>
+
+        <h6>Keterampilan</h6>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-sm" id="tabel_keterampilan">
+                <thead>
+                    <tr>
+                        <th class="col-md-2">No KD</th>
+                        <th>Kompetensi Dasar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in data_mapel[1] %}
+                        <tr>
+                            <td>
+                                {{item[0]}}
+                            </td>
+                            <td>
+                                {{item[2]}}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <br><br>
+        <a href="{{url_for('mapel.mapel_ubah', mapel=mapel)}}"><button class="btn btn-secondary">Ubah</button></a>
+        <a href="#"><button class="btn btn-danger">Hapus</button></a>
+{% endblock %}

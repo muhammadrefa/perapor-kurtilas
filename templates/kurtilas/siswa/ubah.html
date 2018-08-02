@@ -1,0 +1,103 @@
+{% extends "base/base_content.html" %}
+
+{% block page_title %}Lihat Siswa{% endblock %}
+
+{% block page_header %}
+    Tambah Siswa
+{% endblock %}
+
+{% block page_content %}
+<form action="{% if ubah %}../{% endif %}simpan" method="post">
+    <input name="aksi" value="{% if ubah %}ubah{% else %}baru{% endif %}" type="hidden">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-sm">
+            <tbody>
+                <tr>
+                    <td width="20%">Nama</td>
+                    <td><input type="text" name="data" value="{{data[0][2]}}" required></td>
+                </tr>
+                <tr>
+                    <td>NIPD</td>
+                    <td><input type="number" name="data" value="{{data[0][0]}}" required {% if ubah %}readonly{% endif %}></td>
+                </tr>
+                <tr>
+                    <td>NISN</td>
+                    <td><input type="number" name="data" value="{{data[0][1]}}" required></td>
+                </tr>
+                <tr>
+                    <td>Jenis Kelamin</td>
+                    <td>
+                        <input type="radio" name="data" value="0" {% if data[0][3] == 0 %}selected{% endif %} />
+                        <label>Laki-laki</label>
+                        <input type="radio" name="data" value="1" {% if data[0][3] == 1 %}selected{% endif %}/>
+                        <label>Perempuan</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Agama</td>
+                    <td><input type="text" name="data" value="{{data[0][4]}}" required></td>
+                </tr>
+                <tr>
+                    <td>Tempat, Tanggal Lahir</td>
+                    <td><input type="text" name="data" value="{{data[0][5]}}" required>
+                    <input type="text" name="data" value="{{data[0][6]}}" required></td>
+                </tr>
+                <tr>
+                    <td>Alamat</td>
+                    <td><input type="text" name="data" value="{{data[0][7]}}" required></td>
+                </tr>
+                <tr>
+                    <td>No. Telepon Peserta Didik</td>
+                    <td><input type="text" name="data" value="{{data[0][8]}}"></td>
+                </tr>
+                <tr>
+                    <td>Pendidikan Sebelumnya</td>
+                    <td><input type="text" name="data" value="{{data[0][9]}}" required></td>
+                </tr>
+                <tr>
+                    <td>Nama Ayah</td>
+                    <td><input type="text" name="data" value="{{data[0][10]}}" required></td>
+                </tr>
+                <tr>
+                    <td>Nama Ibu</td>
+                    <td><input type="text" name="data" value="{{data[0][11]}}" required></td>
+                </tr>
+                <tr>
+                    <td>Pekerjaan Ayah</td>
+                    <td><input type="text" name="data" value="{{data[0][12]}}" required></td>
+                </tr>
+                <tr>
+                    <td>Pekerjaan Ibu</td>
+                    <td><input type="text" name="data" value="{{data[0][13]}}" required></td>
+                </tr>
+                <tr>
+                    <td>Alamat Orang Tua</td>
+                    <td><input type="text" name="data" value="{{data[0][14]}}" required></td>
+                </tr>
+                <tr>
+                    <td>No. Telepon Orang Tua</td>
+                    <td><input type="text" name="data" value="{{data[0][15]}}"></td>
+                </tr>
+                <tr>
+                    <td>Nama Wali</td>
+                    <td><input type="text" name="data" value="{{data[0][16]}}"></td>
+                </tr>
+                <tr>
+                    <td>Pekerjaan Wali</td>
+                    <td><input type="text" name="data" value="{{data[0][17]}}"></td>
+                </tr>
+                <tr>
+                    <td>Alamat Wali</td>
+                    <td><input type="text" name="data" value="{{data[0][18]}}"></td>
+                </tr>
+                <tr>
+                    <td>No. Telepon Wali</td>
+                    <td><input type="text" name="data" value="{{data[0][19]}}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <input type="submit" class="btn btn-success" value="Simpan">
+</form>
+{% endblock %}

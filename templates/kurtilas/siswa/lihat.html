@@ -1,0 +1,92 @@
+{% extends "base/base_content.html" %}
+
+{% block page_title %}Lihat Siswa{% endblock %}
+
+{% block page_header %}
+    Lihat Siswa
+{% endblock %}
+
+{% block page_content %}
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-sm">
+            <tbody>
+                <tr>
+                    <td width="20%">Nama</td>
+                    <td>{{data_siswa[0][2]}}</td>
+                </tr>
+                <tr>
+                    <td>NIPD</td>
+                    <td>{{data_siswa[0][0]}}</td>
+                </tr>
+                <tr>
+                    <td>NISN</td>
+                    <td>{{data_siswa[0][1]}}</td>
+                </tr>
+                <tr>
+                    <td>Jenis Kelamin</td>
+                    <td>{% if data_siswa[0][3]==0 %}Laki-laki{% else %}Perempuan{% endif %}</td>
+                </tr>
+                <tr>
+                    <td>Agama</td>
+                    <td>{{data_siswa[0][4]}}</td>
+                </tr>
+                <tr>
+                    <td>Tempat, Tanggal Lahir</td>
+                    <td>{{data_siswa[0][5]}}</td>
+                </tr>
+                <tr>
+                    <td>Alamat</td>
+                    <td>{{data_siswa[0][6]}}</td>
+                </tr>
+                <tr>
+                    <td>No. Telepon Peserta Didik</td>
+                    <td>{{data_siswa[0][7]}}</td>
+                </tr>
+                <tr>
+                    <td>Pendidikan Sebelumnya</td>
+                    <td>{{data_siswa[0][8]}}</td>
+                </tr>
+                <tr>
+                    <td>Nama Ayah</td>
+                    <td>{{data_siswa[0][9]}}</td>
+                </tr>
+                <tr>
+                    <td>Nama Ibu</td>
+                    <td>{{data_siswa[0][10]}}</td>
+                </tr>
+                <tr>
+                    <td>Pekerjaan Ayah</td>
+                    <td>{{data_siswa[0][11]}}</td>
+                </tr>
+                <tr>
+                    <td>Pekerjaan Ibu</td>
+                    <td>{{data_siswa[0][12]}}</td>
+                </tr>
+                <tr>
+                    <td>Alamat Orang Tua</td>
+                    <td>{{data_siswa[0][13]}}</td>
+                </tr>
+                <tr>
+                    <td>No. Telepon Orang Tua</td>
+                    <td>{{data_siswa[0][14]}}</td>
+                </tr>
+                <tr>
+                    <td>Nama Wali</td>
+                    <td>{{data_siswa[0][15]}}</td>
+                </tr>
+                <tr>
+                    <td>Pekerjaan Wali</td>
+                    <td>{{data_siswa[0][16]}}</td>
+                </tr>
+                <tr>
+                    <td>Alamat Wali</td>
+                    <td>{{data_siswa[0][17]}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a href="{{url_for('siswa.siswa_ubah', nipd=data_siswa[0][0])}}"><button class="btn btn-secondary">Ubah</button></a>
+    <a href="{{url_for('siswa.siswa_hapus', nipd=data_siswa[0][0])}}"><button class="btn btn-danger">Hapus</button></a>
+
+{% endblock %}

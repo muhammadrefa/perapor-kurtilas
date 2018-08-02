@@ -1,0 +1,118 @@
+{% extends "base/base_content.html" %}
+
+{% block page_title %}Tambah Mata Pelajaran{% endblock %}
+
+{% block page_header %}
+    Tambah Mata Pelajaran
+{% endblock %}
+
+{% block page_content %}
+    <form action="simpan" method="post">
+        Mata pelajaran : <input type="text" name="mapel" value="{{mapel}}">
+        <br><br>
+        <h6>Pengetahuan</h6>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-sm" id="tabel_pengetahuan">
+                <thead>
+                    <tr>
+                        <th class="col-md-2">No KD</th>
+                        <th>Kompetensi Dasar</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in data_mapel[0] %}
+                    <tr>
+                        <td>
+                            <input type="text" name="nokd" pattern=[0-9\.]* value="{{item[0]}}" required>
+                        </td>
+                        <td>
+                            <input type="text" name="kd" class="col-md-12" value="{{item[2]}}" required>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" id="hapus">-</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <button class="btn btn-info" id="tambah_pengetahuan">Tambah</button>
+
+        <br><br>
+
+        <h6>Keterampilan</h6>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-sm" id="tabel_keterampilan">
+                <thead>
+                    <tr>
+                        <th class="col-md-2">No KD</th>
+                        <th>Kompetensi Dasar</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in data_mapel[1] %}
+                    <tr>
+                        <td>
+                            <input type="text" name="nokd" pattern=[0-9\.]* value="{{item[0]}}" required>
+                        </td>
+                        <td>
+                            <input type="text" name="kd" class="col-md-12" value="{{item[2]}}" required>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" id="hapus">-</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <button class="btn btn-info" id="tambah_keterampilan">Tambah</button>
+
+        <br><br>
+        <input type="submit" class="btn btn-success" value="Simpan">
+
+    </form>
+{% endblock %}
+
+{% block script %}
+    <script>
+        $(document).on("click","#hapus",function(){
+            $(this).parent().parent().remove();
+        });
+
+            $("#tambah_pengetahuan").click(function(){
+                var row = '<tr>'
+                +'    <td>'
+                +'        <input type="text" name="nokd" pattern=[0-9\.]* required>'
+                +'    </td>'
+                +'    <td>'
+                +'        <input type="text" name="kd" class="col-md-12" required>'
+                +'    </td>'
+                +'    <td>'
+                +'        <button class="btn btn-danger" id="hapus">-</button>'
+                +'    </td>'
+                +'</tr>';
+                $("#tabel_pengetahuan tbody").append(row);
+                return false;
+            })
+
+            $("#tambah_keterampilan").click(function(){
+            var row = '<tr>'
+                +'    <td>'
+                +'        <input type="text" name="nokd" pattern=[0-9\.]* required>'
+                +'    </td>'
+                +'    <td>'
+                +'        <input type="text" name="kd" class="col-md-12" required>'
+                +'    </td>'
+                +'    <td>'
+                +'        <button class="btn btn-danger" id="hapus">-</button>'
+                +'    </td>'
+                +'</tr>';
+                $("#tabel_keterampilan tbody").append(row);
+                return false;
+            })
+    </script>
+
+{% endblock %}
