@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block page_content %}
-    <form action="simpan" method="post">
+    <form action="../simpan" method="post">
         Mata pelajaran : <input type="text" name="mapel" value="{{mapel}}">
         <br><br>
         <h6>Pengetahuan</h6>
@@ -24,10 +24,10 @@
                     {% for item in data_mapel[0] %}
                     <tr>
                         <td>
-                            <input type="text" name="nokd" pattern=[0-9\.]* value="{{item[0]}}" required>
+                            <input type="text" name="p_nokd" pattern=[0-9\.]* value="{{item[0]}}" required>
                         </td>
                         <td>
-                            <input type="text" name="kd" class="col-md-12" value="{{item[2]}}" required>
+                            <input type="text" name="p_kd" class="col-md-12" value="{{item[2]}}" required>
                         </td>
                         <td>
                             <button class="btn btn-danger" id="hapus">-</button>
@@ -55,10 +55,10 @@
                     {% for item in data_mapel[1] %}
                     <tr>
                         <td>
-                            <input type="text" name="nokd" pattern=[0-9\.]* value="{{item[0]}}" required>
+                            <input type="text" name="k_nokd" pattern=[0-9\.]* value="{{item[0]}}" required>
                         </td>
                         <td>
-                            <input type="text" name="kd" class="col-md-12" value="{{item[2]}}" required>
+                            <input type="text" name="k_kd" class="col-md-12" value="{{item[2]}}" required>
                         </td>
                         <td>
                             <button class="btn btn-danger" id="hapus">-</button>
@@ -85,10 +85,10 @@
             $("#tambah_pengetahuan").click(function(){
                 var row = '<tr>'
                 +'    <td>'
-                +'        <input type="text" name="nokd" pattern=[0-9\.]* required>'
+                +'        <input type="text" name="p_nokd" pattern=[0-9\.]* required>'
                 +'    </td>'
                 +'    <td>'
-                +'        <input type="text" name="kd" class="col-md-12" required>'
+                +'        <input type="text" name="p_kd" class="col-md-12" required>'
                 +'    </td>'
                 +'    <td>'
                 +'        <button class="btn btn-danger" id="hapus">-</button>'
@@ -101,10 +101,10 @@
             $("#tambah_keterampilan").click(function(){
             var row = '<tr>'
                 +'    <td>'
-                +'        <input type="text" name="nokd" pattern=[0-9\.]* required>'
+                +'        <input type="text" name="k_nokd" pattern=[0-9\.]* required>'
                 +'    </td>'
                 +'    <td>'
-                +'        <input type="text" name="kd" class="col-md-12" required>'
+                +'        <input type="text" name="k_kd" class="col-md-12" required>'
                 +'    </td>'
                 +'    <td>'
                 +'        <button class="btn btn-danger" id="hapus">-</button>'
