@@ -41,7 +41,10 @@ def saveMapel(mapel, data, aksi):
     conn, c = dbConn()
 
     if aksi == "ubah" or aksi == "hapus":
-        c.execute("DROP TABLE `" + mapel + "`")
+        try:
+            c.execute("DROP TABLE `" + mapel + "`")
+        except:
+            pass
     if aksi != "hapus":
         c.execute("CREATE TABLE `" + mapel + "` (`nokd` INTEGER, `jenis` TEXT, `kd` TEXT)")
         c.executemany("INSERT INTO `" + mapel + "` VALUES (?,?,?)", (to_save))
