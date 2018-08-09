@@ -33,9 +33,9 @@ def mapel_tambah():
     return render_template("kurtilas/mapel/ubah.html", mapel="mapel_", data_mapel=None)
 
 @mapel.route('/mapel/simpan', methods=['GET', 'POST'])
-def siswa_simpan():
-    data = []
+def mapel_simpan():
+    data = {}
     if request.method == 'POST':
         data = postDataParser(request.form)
-    kurtilas_db.saveMapel(data['data'])
+    kurtilas_db.saveMapel(data['mapel'][0], data, aksi="ubah")
     return "OK"

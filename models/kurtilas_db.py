@@ -30,9 +30,23 @@ def getMapel(mapel=None, jenis=None):
     conn.close()
     return data_mapel
 
-def saveMapel():
+def saveMapel(mapel, data, aksi):
     # TODO : Dikerjakan
+    to_save = []
+    for i in range(0, len(data['p_nokd'])):
+        to_save.append([data['p_nokd'][i], 'pengetahuan', data['p_kd'][i]])
+    for i in range(0, len(data['k_nokd'])):
+        to_save.append([data['k_nokd'][i], 'keterampilan', data['k_kd'][i]])
+
     conn, c = dbConn()
+
+    if aksi == "ubah" or aksi == "hapus":
+        c.execute("DROP TABLE `" + mapel + "`")
+    if aksi != "hapus":
+        c.execute("CREATE TABLE `" + mapel + "` (`nokd` INTEGER, `jenis` TEXT, `kd` TEXT)")
+        c.executemany("INSERT INTO `" + mapel + "` VALUES (?,?,?)", (to_save))
+
+    conn.commit()
     c.close()
     conn.close()
     return True
