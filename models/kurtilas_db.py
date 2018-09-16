@@ -31,7 +31,6 @@ def getMapel(mapel=None, jenis=None):
     return data_mapel
 
 def saveMapel(mapel, data, aksi):
-    # TODO : Dikerjakan
     to_save = []
     for i in range(0, len(data['p_nokd'])):
         to_save.append([data['p_nokd'][i], 'pengetahuan', data['p_kd'][i]])
@@ -83,3 +82,42 @@ def saveSiswa(data, aksi):
     c.close()
     conn.close()
     return True
+
+def saveNilai(data, mapel):
+    to_save = []
+    kd = ['nipd']
+    db_mapel = getMapel(mapel)
+    for data_mapel in db_mapel[0]:
+        kd.append(str(data_mapel[0]))
+    for data_mapel in db_mapel[1]:
+        kd.append(str(data_mapel[0]))
+    i = 0
+    for x in data:
+        to_save.append([])
+        to_save[i].append(x)
+        for y in data[x]:
+            to_save[i].append(y)
+        i+=1
+    mapel = mapel.split('_')[1]
+    print("mapel -> " + mapel)
+    print(kd)
+    print(to_save)
+
+    conn, c = dbConn()
+    try:
+        c.execute("DROP TABLE `nilai_" + mapel + "`")
+    except:
+        pass
+
+    statement = ""
+    wildcard = ""
+    for i in kd:
+        statement += "`" + i + "` INTEGER,"
+        wildcard += "?,"
+    statement = statement[:-1]
+    wildcard = wildcard[:-1]
+    c.execute("CREATE TABLE `nilai_" + mapel + "` (" + statement + ")")
+    c.executemany("INSERT INTO `nilai_" + mapel + "` VALUES (" + wildcard + ")", (to_save))
+    conn.commit()
+    c.close()
+    conn.close()
