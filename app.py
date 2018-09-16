@@ -8,6 +8,7 @@ from flask import Flask, render_template, request
 from controllers.kurtilas_controller import kurtilas
 from controllers.siswa_controller import siswa
 from controllers.mapel_controller import mapel
+from controllers.nilai_controller import nilai
 
 if getattr(sys, 'frozen', False):
     template_folder = os.path.join(sys._MEIPASS, 'templates')
@@ -18,6 +19,7 @@ else:
 app.register_blueprint(kurtilas)
 app.register_blueprint(siswa)
 app.register_blueprint(mapel)
+app.register_blueprint(nilai)
 
 config = {
     'host'  : "0.0.0.0",
