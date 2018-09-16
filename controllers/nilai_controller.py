@@ -12,6 +12,15 @@ def postDataParser(form):
         data[par] = form.getlist(par)
     return data
 
+@nilai.route('/nilai')
+def nilai_index():
+    data = kurtilas_db.getMapel()
+    return render_template("kurtilas/nilai/index.html", mapel=data)
+
+@nilai.route('/nilai/<mapel>')
+def nilai_lihat(mapel):
+    pass
+
 @nilai.route('/nilai/<mapel>/ubah')
 def nilai_penilaian(mapel):
     data_mapel = kurtilas_db.getMapel(mapel=mapel)
